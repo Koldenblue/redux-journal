@@ -9,8 +9,10 @@ export default function Home() {
     })
   }
 
-  return (<>
+  return (
+  <>
     <button onClick={getEntry} >CLICK</button>
     <p>Hi</p>
-  </>)
+  </>
+  )
 }
