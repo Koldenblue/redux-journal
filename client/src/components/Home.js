@@ -1,5 +1,11 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import Journal from './Journal';
+import ReducerHook from './ReducerHook';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { useSelector, useDispatch } from 'react-redux';
 
 export default function Home() {
   const [text, setText] = useState('');
@@ -10,18 +16,22 @@ export default function Home() {
     })
   }
 
-  const save = () => {
-    console.log(text);
-  }
+  const dispatch = useDispatch();
+
 
   return (
-  <>
-    <button onClick={getEntry} >CLICK</button>
-    <p>Hi</p>
+    <>
+      {/* <ReducerHook /> */}
+      {/* <button onClick={getEntry} >CLICK</button> */}
 
-    {/* <textarea className='journal-entry' onChange={(event) => setText(event.target.value)} cols='40' rows='10' />
-    <button onClick={save}>Save</button> */}
-  </>
+      <Container>
+        <Row>
+          <Col>
+            <Journal />
+          </Col>
+        </Row>
+      </Container>
+    </>
   )
 }
 

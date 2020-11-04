@@ -11,9 +11,8 @@ function App() {
 
         <Route exact path='/' component={() => {
           return (<>
-            <ReducerHook />
+            {/* <ReducerHook /> */}
             <Home />
-            <Journal />
           </>)
         }} />
 
