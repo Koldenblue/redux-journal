@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import axios from 'axios';
 
 // the reducer functions for updating state
 export const journalSlice = createSlice({
@@ -19,6 +20,12 @@ export const journalSlice = createSlice({
   }
 });
 
+export const postData = journalText => dispatch => {
+  let text = {entry: journalText}
+  axios.post('api/journal', text).then(data => {
+    console.log(data);
+  })
+}
 // allows the useSelector(selectText) method to be used in order to get the state.
 // const text = useSelector(selectText)
 // then const text will be the state

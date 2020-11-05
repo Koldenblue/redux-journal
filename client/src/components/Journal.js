@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { postEntry, deleteEntry } from '../app/journalSlice';
+import { postEntry, deleteEntry, selectText, postData } from '../app/journalSlice';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
@@ -9,12 +9,14 @@ import Form from 'react-bootstrap/Form';
 export default function Journal() {
   const [text, setText] = useState('');
 
+  let journalText = useSelector(selectText);
   const dispatch = useDispatch();
 
-  const post = async (event) => {
+  const post = (event) => {
     event.preventDefault()
     console.log(event.target[0].value)
-    await dispatch(postEntry(event.target[0].value));
+    dispatch(postEntry(event.target[0].value));
+    dispatch(postData(event.target[0].value));
     // axios.post('/api/entry', (req, res) => {
     //   console.log()
     // })
