@@ -8,8 +8,6 @@ import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
 
 export default function Home() {
-  const [text, setText] = useState('');
-
   const getEntry = () => {
     axios.get('/api/entry').then((data) => {
       console.log(data)
