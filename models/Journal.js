@@ -4,7 +4,10 @@ const { Schema } = mongoose;
 
 
 const journalSchema = new Schema({
-  entry: {
+  journalText: {
+    type: String
+  },
+  mood: {
     type: String
   }
 })

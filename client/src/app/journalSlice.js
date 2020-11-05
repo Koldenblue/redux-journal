@@ -20,9 +20,8 @@ export const journalSlice = createSlice({
   }
 });
 
-export const postData = journalText => dispatch => {
-  let text = {entry: journalText}
-  axios.post('api/journal', text).then(data => {
+export const postData = entry => dispatch => {
+  axios.post('api/journal', entry).then(data => {
     console.log(data);
   })
 }
