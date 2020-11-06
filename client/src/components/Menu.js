@@ -1,17 +1,12 @@
-import Axios from 'axios';
 import React, { useEffect } from 'react';
 import Nav from 'react-bootstrap/Nav';
 import { useSelector, useDispatch } from 'react-redux';
 import { readData } from '../app/journalSlice';
+import Moods from './Moods';
 
 export default function Menu() {
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    Axios.get('/api/moodtotals').then(data => {
-      console.log(data)
-    })
-  }, [])
 
   const getLatestEntry = () => {
   }
@@ -30,7 +25,6 @@ export default function Menu() {
       <Nav.Link href="/specificdate">View entries on a specific date</Nav.Link>
     </Nav>
     {/* should have delete and update entries as well */}
-    <p>My moods have been:</p>
-
+    <Moods />
   </>)
 }
