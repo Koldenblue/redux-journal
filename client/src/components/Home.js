@@ -29,18 +29,18 @@ export default function Home() {
             <Menu />
           </Col>
 
-        <Col>
-          <Row>
-            <Moods />
-
-          </Row>
-          <Container>
+          <Col>
             <Row>
-              <Col>
-                <Journal />
-              </Col>
+              <Moods />
+
             </Row>
-          </Container>
+            <Container>
+              <Row>
+                <Col>
+                  <Journal />
+                </Col>
+              </Row>
+            </Container>
           </Col>
         </Row>
       </Container>
