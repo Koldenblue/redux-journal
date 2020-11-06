@@ -20,6 +20,41 @@ let journalSeed = [{
         journalText: 'hi',
         mood: 'sad',
         date: new Date().setDate(new Date().getDate() - 1),
+      },
+      {
+        journalText: 'hi',
+        mood: 'frustrated',
+        date: new Date().setDate(new Date().getDate() - 1),
+      },
+      {
+        journalText: 'hi',
+        mood: 'embarrassed',
+        date: new Date().setDate(new Date().getDate() - 1),
+      },
+      {
+        journalText: 'hi',
+        mood: 'grumpy',
+        date: new Date().setDate(new Date().getDate() - 1),
+      },
+      {
+        journalText: 'hi',
+        mood: 'confused',
+        date: new Date().setDate(new Date().getDate() - 1),
+      },
+      {
+        journalText: 'hi',
+        mood: 'surprised',
+        date: new Date().setDate(new Date().getDate() - 1),
+      },
+      {
+        journalText: 'hi',
+        mood: 'anxious',
+        date: new Date().setDate(new Date().getDate() - 1),
+      },
+      {
+        journalText: 'hi',
+        mood: 'angry',
+        date: new Date().setDate(new Date().getDate() - 1),
       }
   ]
 }]

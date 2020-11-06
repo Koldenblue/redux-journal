@@ -2,43 +2,55 @@ import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Badge from 'react-bootstrap/Badge';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/esm/Container';
 
 export default function Moods(props) {
   const [moodList, setMoodList] = useState('')
-
+  const [moodTitle, setMoodTitle] = useState('')
   let moods;
-  let key = 0;
+  let key = -1;
   useEffect(() => {
     Axios.get('/api/moodtotals').then(data => {
-      console.log(data)
       moods = data.data;
-      console.log(moods)
       let moodArr = [];
       for (let elem in moods) {
-        console.log(elem)
-        console.log(moods[elem])
         let newObj = {}
         newObj[elem] = moods[elem];
         moodArr.push(newObj);
       }
-      console.log(moodArr)
 
       setMoodList(moodArr.map((elem) => {
-        console.log(elem)
-        console.log(Object.keys(elem)[0])
-        return (
-          <Button variant="primary" key={key++} id={`mood-${Object.keys(elem)[0].toLowerCase()}`}>
-            {Object.keys(elem)[0]}<Badge variant="light">{Object.values(elem)[0]}</Badge>
-          </Button>
-        )
+
+        key++;
+
+          return (
+            <Col md={2}>
+              <p className='mood-btn' key={key++} id={`mood-${Object.keys(elem)[0].toLowerCase()}`}>
+                {Object.keys(elem)[0]}<Badge variant="light">{Object.values(elem)[0]}</Badge>
+              </p>
+            </Col>
+          )
+
       }))
-      console.log(moodList)
+      setMoodTitle(<p id='mood-title'>My moods have been:</p>)
     })
   }, [])
 
 
   return (<>
-    <p>My moods have been:</p>
-    {moodList}
+  <Container>
+    <Row>
+      <Col>
+        {moodTitle}
+      </Col>
+    </Row>
+
+    <Row>
+        {moodList}
+      <Col></Col>
+    </Row>
+    </Container>
   </>)
 }

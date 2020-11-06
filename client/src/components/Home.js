@@ -7,6 +7,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
 import Menu from './Menu';
+import Title from './Title';
 
 export default function Home() {
   const getEntry = () => {
@@ -19,6 +20,7 @@ export default function Home() {
 
   return (
     <>
+    <Title />
       <Container fluid>
         <Row>
           <Menu />
