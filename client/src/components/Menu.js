@@ -16,6 +16,7 @@ export default function Menu() {
   const getLatestEntry = () => {
   }
 
+  // goes to the journal/all route, thru the redux store
   const getAllEntries = () => {
     console.log('reading')
     dispatch(readData('entry'));
@@ -24,7 +25,7 @@ export default function Menu() {
   return (<>
     <Nav defaultActiveKey="/home" className="flex-column">
       <Nav.Link href="/latest">View my latest entry</Nav.Link>
-      <Nav.Link href='/journal/all'>View all entries</Nav.Link>
+      <Nav.Link href='/allentries'>View all entries</Nav.Link>
       <button onClick={getAllEntries} className='btn btn-success'>View all entries</button>
       <Nav.Link href="/specificdate">View entries on a specific date</Nav.Link>
     </Nav>

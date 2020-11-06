@@ -27,7 +27,6 @@ export const postData = entry => dispatch => {
 }
 
 export const readData = (entry) => dispatch => {
-  console.log('dispatched')
   axios.get('api/journal/all').then((data) => {
     console.log(data);
   })

@@ -20,9 +20,6 @@ export default function Journal() {
       date: ''
     };
     dispatch(postData(entry));
-    // dispatch(postEntry(event.target[0].value));
-    dispatch(readData(entry));
-
   }
 
   return (<>
@@ -46,8 +43,7 @@ export default function Journal() {
               <label className="input-group-text">How Am I Feeling?</label>
             </div>
             <select className="custom-select" id="inputGroupSelect01">
-              <option defaultValue>Feeling Today...</option>
-              <option>Happy</option>
+              <option defaultValue>Happy</option>
               <option>Sad</option>
               <option>Angry</option>
               <option>Surprised</option>

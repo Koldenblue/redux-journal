@@ -20,14 +20,16 @@ const journalSchema = new Schema({
 
 // adds up all the moods and returns them in a single object
 journalSchema.methods.getTotalMoods = function() {
-  console.log("getting moods")
   let moods = {};
   for (let i = 0, j = this.entries.length; i < j; i++) {
-    if (moods.entries.mood) {
-      moods.entries.mood++;
+    let currentMood = this.entries[i].mood;
+    console.log(currentMood);
+    console.log(moods[currentMood])
+    if (moods[currentMood] !== undefined) {
+      moods[currentMood]++;
     }
     else {
-      moods.entries.mood = 0;
+      moods[currentMood] = 1;
     }
   }
   return moods;

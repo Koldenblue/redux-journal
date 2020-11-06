@@ -12,25 +12,23 @@ router.get('/journal/all', (req, res) => {
 router.put('/journal', (req, res) => {
   db.Journal.findOne({}, (err, doc) => {
     if (doc === null) {
+      // todo: no entries yet?
       db.Journal.create(req.body)
+    } else {
+      console.log(doc)
+      doc.entries.push(req.body)
+      console.log(doc)
+      doc.save()
+      res.json(doc);
     }
-    console.log(doc)
-    doc.entries.push(req.body)
-    console.log(doc)
-    doc.save()
-    res.json(doc);
   })
 })
 
 router.get('/moodtotals', (req, res) => {
-  db.Journal.find({}, (err, doc) => {
+  db.Journal.findOne({}, (err, doc) => {
     if (err) console.error(err)
-    console.log(doc);
-    // let totalMoods = doc.getTotalMoods();
-    res.json({});
-  }).catch((err) => {
-    console.log("ERrOR")
-    console.log(err);
+    let totalMoods = doc.getTotalMoods();
+    res.json(totalMoods);
   })
 })
 
