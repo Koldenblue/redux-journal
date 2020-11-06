@@ -16,7 +16,8 @@ export default function Journal() {
     event.preventDefault();
     let entry = {
       journalText: event.target[0].value,
-      mood: event.target[1].value
+      mood: event.target[1].value,
+      date: ''
     };
     dispatch(postData(entry));
     // dispatch(postEntry(event.target[0].value));
@@ -53,10 +54,8 @@ export default function Journal() {
             <option>Embarrassed</option>
             <option>Grumpy</option>
             <option>Excited</option>
-            <option>Scared</option>
-            <option >Anxious</option>
-            <option >Confused</option>
-            <option >Confused</option>
+            <option>Anxious</option>
+            <option>Confused</option>
           </select>
         </div>
         </Col>

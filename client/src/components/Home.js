@@ -6,6 +6,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
+import Menu from './Menu';
 
 export default function Home() {
   const getEntry = () => {
@@ -19,9 +20,10 @@ export default function Home() {
 
   return (
     <>
-      {/* <ReducerHook /> */}
-      {/* <button onClick={getEntry} >CLICK</button> */}
-
+    <Container fluid>
+      <Row>
+        <Menu />
+      </Row>
       <Container>
         <Row>
           <Col>
@@ -29,6 +31,7 @@ export default function Home() {
           </Col>
         </Row>
       </Container>
+    </Container>
     </>
   )
 }
