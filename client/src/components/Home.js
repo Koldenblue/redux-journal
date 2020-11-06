@@ -8,6 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
 import Menu from './Menu';
 import Title from './Title';
+import Moods from './Moods';
 
 export default function Home() {
   const getEntry = () => {
@@ -20,18 +21,28 @@ export default function Home() {
 
   return (
     <>
-    <Title />
+      <Title />
+
       <Container fluid>
         <Row>
-          <Menu />
-        </Row>
-        <Container>
+          <Col md={2}>
+            <Menu />
+          </Col>
+
+        <Col>
           <Row>
-            <Col>
-              <Journal />
-            </Col>
+            <Moods />
+
           </Row>
-        </Container>
+          <Container>
+            <Row>
+              <Col>
+                <Journal />
+              </Col>
+            </Row>
+          </Container>
+          </Col>
+        </Row>
       </Container>
     </>
   )

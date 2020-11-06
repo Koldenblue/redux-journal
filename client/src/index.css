@@ -16,3 +16,8 @@
 .mood-title {
   display: block
 }
+
+.nav-menu {
+  top: 5em;
+  bottom: 0;
+}

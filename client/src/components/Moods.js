@@ -22,9 +22,7 @@ export default function Moods(props) {
       }
 
       setMoodList(moodArr.map((elem) => {
-
         key++;
-
           return (
             <Col md={2}>
               <p className='mood-btn' key={key++} id={`mood-${Object.keys(elem)[0].toLowerCase()}`}>
