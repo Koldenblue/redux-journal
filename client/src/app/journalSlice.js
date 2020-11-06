@@ -21,7 +21,7 @@ export const journalSlice = createSlice({
 });
 
 export const postData = entry => dispatch => {
-  axios.post('api/journal', entry).then(data => {
+  axios.put('api/journal', entry).then(data => {
     console.log(data);
   })
 }

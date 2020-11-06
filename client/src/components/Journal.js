@@ -40,24 +40,24 @@ export default function Journal() {
 
       <Row>
         <Col>
-        <div className="input-group mb-3">
-          <div className="input-group-prepend">
-            <label className="input-group-text" for="inputGroupSelect01">How Am I Feeling?</label>
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <label className="input-group-text">How Am I Feeling?</label>
+            </div>
+            <select className="custom-select" id="inputGroupSelect01">
+              <option defaultValue>Feeling Today...</option>
+              <option>Happy</option>
+              <option>Sad</option>
+              <option>Angry</option>
+              <option>Surprised</option>
+              <option>Frustrated</option>
+              <option>Embarrassed</option>
+              <option>Grumpy</option>
+              <option>Excited</option>
+              <option>Anxious</option>
+              <option>Confused</option>
+            </select>
           </div>
-          <select className="custom-select" id="inputGroupSelect01">
-            <option selected>Feeling Today...</option>
-            <option>Happy</option>
-            <option>Sad</option>
-            <option>Angry</option>
-            <option>Surprised</option>
-            <option>Frustrated</option>
-            <option>Embarrassed</option>
-            <option>Grumpy</option>
-            <option>Excited</option>
-            <option>Anxious</option>
-            <option>Confused</option>
-          </select>
-        </div>
         </Col>
       </Row>
 

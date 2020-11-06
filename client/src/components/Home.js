@@ -17,21 +17,20 @@ export default function Home() {
 
   const dispatch = useDispatch();
 
-
   return (
     <>
-    <Container fluid>
-      <Row>
-        <Menu />
-      </Row>
-      <Container>
+      <Container fluid>
         <Row>
-          <Col>
-            <Journal />
-          </Col>
+          <Menu />
         </Row>
+        <Container>
+          <Row>
+            <Col>
+              <Journal />
+            </Col>
+          </Row>
+        </Container>
       </Container>
-    </Container>
     </>
   )
 }
