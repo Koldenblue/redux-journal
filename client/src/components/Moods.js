@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import Axios from 'axios';
+import Button from 'react-bootstrap/Button';
+import Badge from 'react-bootstrap/Badge';
 
 export default function Moods(props) {
   const [moodList, setMoodList] = useState('')
 
   let moods;
-  let key=0;
+  let key = 0;
   useEffect(() => {
     Axios.get('/api/moodtotals').then(data => {
       console.log(data)
@@ -21,10 +23,14 @@ export default function Moods(props) {
       }
       console.log(moodArr)
 
-      setMoodList(moodArr.map(() => {
-        return (<p key={key++}>
-          hi
-        </p>)
+      setMoodList(moodArr.map((elem) => {
+        console.log(elem)
+        console.log(Object.keys(elem)[0])
+        return (
+          <Button variant="primary" key={key++} id={`mood-${Object.keys(elem)[0].toLowerCase()}`}>
+            {Object.keys(elem)[0]}<Badge variant="light">{Object.values(elem)[0]}</Badge>
+          </Button>
+        )
       }))
       console.log(moodList)
     })
