@@ -32,6 +32,8 @@ router.get('/moodtotals', (req, res) => {
   })
 })
 
-
+router.post('/admin/seeder', (req, res) => {
+  res.json('hello')
+})
 
 module.exports = router;

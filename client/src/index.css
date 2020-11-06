@@ -21,3 +21,18 @@
   top: 5em;
   bottom: 0;
 }
+
+.journal-container {
+  background-color: cornsilk;
+  border-width: 4px;
+  border-radius: 9px;
+  border-color: chocolate;
+  border-style: dotted;
+  margin: 1em;
+}
+
+.mood-entry {
+  background-color: darkkhaki;
+  border-radius: 9px;
+  padding: 0.5em;
+}

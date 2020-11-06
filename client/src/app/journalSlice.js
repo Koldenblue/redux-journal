@@ -27,8 +27,13 @@ export const postData = entry => dispatch => {
 }
 
 export const readData = (entry) => dispatch => {
-  axios.get('api/journal/all').then((data) => {
-    console.log(data);
+  return new Promise((resolve, reject) => {
+    axios.get('api/journal/all').then((data) => {
+      console.log(data);
+      resolve(data);
+    }).catch((err) => {
+      reject(err)
+    })
   })
 }
 
