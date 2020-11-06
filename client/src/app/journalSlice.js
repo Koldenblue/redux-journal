@@ -25,6 +25,14 @@ export const postData = entry => dispatch => {
     console.log(data);
   })
 }
+
+export const readData = (entry) => dispatch => {
+  console.log('dispatched')
+  axios.get('api/journal/all').then((data) => {
+    console.log(data);
+  })
+}
+
 // allows the useSelector(selectText) method to be used in order to get the state.
 // const text = useSelector(selectText)
 // then const text will be the state

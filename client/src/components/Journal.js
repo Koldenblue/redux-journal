@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { postEntry, deleteEntry, selectText, postData } from '../app/journalSlice';
+import { postEntry, deleteEntry, selectText, postData, readData } from '../app/journalSlice';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,6 +21,7 @@ export default function Journal() {
     };
     dispatch(postData(entry));
     // dispatch(postEntry(event.target[0].value));
+    dispatch(readData(entry));
 
   }
 

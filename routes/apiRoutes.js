@@ -2,6 +2,13 @@ const router = require("express").Router();
 const axios = require("axios");
 const db = require("../models")
 
+router.get('/journal/all', (req, res) => {
+  console.log('journal/all')
+  db.Journal.find({}, (err, data) => {
+    res.json(data);
+  })
+})
+
 router.put('/journal', (req, res) => {
   db.Journal.findOne({}, (err, doc) => {
     if (doc === null) {
