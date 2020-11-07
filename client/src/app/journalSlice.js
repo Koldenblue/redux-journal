@@ -11,19 +11,20 @@ export const journalSlice = createSlice({
   reducers: {
     postEntry: (state, action) => {
       state.value = action.payload;
-      console.log(state)
-      console.log(action.payload)
+      // console.log(state)
+      // console.log(action.payload)
     },
     deleteEntry: (state) => {
       state.value = '';
-      console.log(state)
+      // console.log(state)
     },
     switchTheme: (state) => {
-      console.log('switching')
       if (state.theme === 'light') {
         state.theme = 'dark';
+        sessionStorage.setItem('theme', 'dark');
       } else {
         state.theme = 'light';
+        sessionStorage.setItem('theme', 'light');
       }
     }
   }
@@ -38,7 +39,7 @@ export const postData = entry => dispatch => {
 export const readData = (entry) => dispatch => {
   return new Promise((resolve, reject) => {
     axios.get('api/journal/all').then((data) => {
-      console.log(data);
+      // console.log(data);
       resolve(data);
     }).catch((err) => {
       reject(err)

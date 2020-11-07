@@ -4,10 +4,8 @@
 
 #jumbo-title {
   padding: 1em;
-}
+  background-color: rgb(224, 205, 125) ;
 
-.jumbotron {
-  background-color: rgb(224, 205, 125) !important;
 }
 
 .mood-btn {
@@ -20,8 +18,6 @@
 .mood-title {
   display: block;
 }
-
-
 
 .nav-menu {
   top: 5em;
@@ -51,3 +47,41 @@
 .badge {
   margin-left: 6px;
 }
+
+/* DARK THEME CLASSES */
+.dark-body {
+  background-color: rgb(75, 82, 88);
+}
+
+.dark-journal-text-area {
+  background-color: #333 !important;
+  border-color: indianred !important;
+  color: whitesmoke !important;
+}
+
+.custom-select-dark {
+  border-color: indianred !important;
+  background-color: #333 !important;
+  color: whitesmoke !important;
+}
+
+.input-group-text-dark {
+  border-color: indianred !important;
+  background-color: #2c3719 !important;
+  color: whitesmoke !important;
+}
+
+.mood-btn-dark {
+  margin: 0.5em;
+  padding: 0.5em;
+  background-color: rgb(104, 71, 0);
+  border-radius: 8px;
+  color: whitesmoke;
+}
+
+#jumbo-title-dark {
+  background-color: rgb(58, 49, 11) ;
+  padding: 1em;
+  color: whitesmoke;
+}
+/* ===================== */

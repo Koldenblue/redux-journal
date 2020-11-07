@@ -9,8 +9,13 @@ export default function BackgroundToggle() {
   let currentTheme = useSelector(selectTheme);
 
   useEffect(() => {
-    console.log(currentTheme)
-  }, [])
+    if (currentTheme === 'light') {
+      document.querySelector('body').setAttribute('class', 'light-body');
+    } else {
+      document.querySelector('body').setAttribute('class', 'dark-body');
+      document.getElementById('theme-switch').checked=true;
+    }
+  }, [currentTheme])
   
   return (
     <Form>
@@ -19,7 +24,7 @@ export default function BackgroundToggle() {
         id="theme-switch"
         label="Light / Dark Theme"
         onClick={() => {dispatch(switchTheme())}}
-        defaultChecked={false}
+        defaultChecked={currentTheme === 'dark' ? true : false}
       />
     </Form>
   )

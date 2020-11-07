@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { postEntry, deleteEntry, selectText, postData, readData } from '../app/journalSlice';
+import React, { useState, useEffect } from 'react';
+import { postEntry, deleteEntry, selectText, postData, readData, selectTheme, switchTheme } from '../app/journalSlice';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 
 export default function Journal() {
   const [text, setText] = useState('');
+  let currentTheme = useSelector(selectTheme);
 
   let journalText = useSelector(selectText);
   const dispatch = useDispatch();
@@ -20,18 +20,26 @@ export default function Journal() {
       date: new Date()
     };
     dispatch(postData(entry));
+    sessionStorage.setItem('theme', currentTheme);
     window.location.reload();
   }
+
+  useEffect(() => {
+    let sessionTheme = sessionStorage.getItem('theme');
+    if (sessionTheme !== null && currentTheme !== sessionTheme) {
+      dispatch(switchTheme());
+    }
+  }, [])
 
   return (<>
     <Form onSubmit={(event) => post(event)}>
       <Row>
         <Col>
-          <div className="input-group journal-entry">
+          <div className='input-group journal-entry'>
             <div className="input-group-prepend">
-              <span className="input-group-text">Today's Journal Entry</span>
+              <span className={`input-group-text ${currentTheme === 'dark' ? 'input-group-text-dark' : ""}`}>Today's Journal Entry</span>
             </div>
-            <textarea className='form-control ' onChange={(event) => setText(event.target.value)} rows='10' aria-label="With textarea" />
+            <textarea className={currentTheme === 'dark' ? 'form-control dark-journal-text-area' : 'form-control'} onChange={(event) => setText(event.target.value)} rows='10' aria-label="With textarea" />
           </div>
         </Col>
 
@@ -41,9 +49,9 @@ export default function Journal() {
         <Col>
           <div className="input-group mb-3">
             <div className="input-group-prepend">
-              <label className="input-group-text">How Am I Feeling?</label>
+              <label className={`input-group-text ${currentTheme === 'dark' ? 'input-group-text-dark' : ""}`}>How Am I Feeling?</label>
             </div>
-            <select className="custom-select" id="inputGroupSelect01">
+            <select className={`custom-select ${currentTheme === 'dark' ? 'custom-select-dark' : ""}`} id="inputGroupSelect01">
               <option defaultValue>Happy</option>
               <option>Sad</option>
               <option>Angry</option>

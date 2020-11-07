@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { readData } from '../app/journalSlice';
+import { readData, selectTheme, switchTheme } from '../app/journalSlice';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -11,14 +11,21 @@ import Menu from './Menu';
 
 export default function AllEntries() {
   const [entries, setEntries] = useState('');
+  let currentTheme = useSelector(selectTheme);
 
-  const deleteEntry = (date) => {
-    console.log(date);
-    axios.delete(`api/delete/${date}`).then(data => {
-      console.log(data);
+  const deleteEntry = (id) => {
+    axios.delete(`api/delete/${id}`).then(data => {
+      sessionStorage.setItem('theme', currentTheme);
       window.location.reload();
     })
   }
+
+  useEffect(() => {
+    let sessionTheme = sessionStorage.getItem('theme');
+    if (sessionTheme !== null && currentTheme !== sessionTheme) {
+      dispatch(switchTheme());
+    }
+  }, [])
 
   const dispatch = useDispatch();
   useEffect(() => {
