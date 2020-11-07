@@ -24,11 +24,16 @@ router.get('/moodtotals', (req, res) => {
   })
 })
 
-router.delete('/delete/:date', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
   console.log(req.params)
   console.log('delete route');
-  // db.Journal.deleteOne()
-  res.json({})
+  db.Journal.deleteOne({_id: req.params.id}).then((data) => {
+    console.log(data)
+    res.json({})
+  }).catch(err => {
+    res.json({})
+    console.error(err)
+  })
 })
 
 module.exports = router;
