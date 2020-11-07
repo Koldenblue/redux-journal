@@ -13,13 +13,29 @@ export default function Moods(props) {
   let key = -1;
   useEffect(() => {
     Axios.get('/api/moodtotals').then(data => {
-      moods = data.data;
       let moodArr = [];
-      for (let elem in moods) {
-        let newObj = {}
-        newObj[elem] = moods[elem];
-        moodArr.push(newObj);
+      let newObj = {}
+      moods = data.data;
+      console.log(moods)
+      for (let i = 0, j = moods.length; i < j; i++) {
+        console.log(moods[i])
+        let elem = moods[i]['entries']['mood'];
+        console.log(elem)
+        if (!newObj[elem]) {
+          newObj[elem] = 1
+        } else {
+          newObj[elem]++;
+        }
       }
+      console.log(newObj)
+
+      for (let elem in newObj) {
+        let moodObj = {};
+        console.log(elem)
+        moodObj[elem] = newObj[elem]
+        moodArr.push(moodObj);
+      }
+      console.log(moodArr)
 
       setMoodList(moodArr.map((elem) => {
         key++;

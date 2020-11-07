@@ -9,31 +9,18 @@ router.get('/journal/all', (req, res) => {
   })
 })
 
-router.put('/journal', (req, res) => {
-  db.Journal.findOne({}, (err, doc) => {
-    console.log(req.body)
-    if (doc === null) {
-      console.log(' no doc yet')
-      db.Journal.create(req.body).then(() => {
-        db.Journal.findOne({}, (err, doc) => {
-          doc.entries.push(req.body)
-          doc.save()
-          res.json(doc);
-        })
-      })
-    } else {
-      doc.entries.push(req.body)
-      doc.save()
-      res.json(doc);
-    }
+router.post('/journal', (req, res) => {
+  console.log(req.body)
+  db.Journal.create({entries: req.body}).then(() => {
+    res.json()
   })
 })
 
 router.get('/moodtotals', (req, res) => {
-  db.Journal.findOne({}, (err, doc) => {
+  db.Journal.find({}, (err, doc) => {
     if (err) console.error(err)
-    let totalMoods = doc.getTotalMoods();
-    res.json(totalMoods);
+    console.log(doc)
+    res.json(doc);
   })
 })
 

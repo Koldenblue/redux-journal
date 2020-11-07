@@ -3,7 +3,7 @@ const { Schema } = mongoose;
 
 
 const journalSchema = new Schema({
-  entries: [{
+  entries: {
     journalText: {
       type: String
     },
@@ -13,7 +13,7 @@ const journalSchema = new Schema({
     date: {
       type: Date
     }
-  }]
+  }
 })
 
 // Note that methods, as well as .save(), must be used with findOne, rather than just find

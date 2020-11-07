@@ -26,22 +26,26 @@ export default function AllEntries() {
       // for (let entry of data.data[0].entries) {
       //   console.log(entry)
       // }
-      setEntries(data.data[0].entries.map((entry) => {
+      console.log('reading')
+      // console.log(data)
+      console.log(data.data)
+
+      setEntries(data.data.map((entry) => {
         return (
-          <Container className='journal-container' key={entry['date']}>
+          <Container className='journal-container' key={entry.entries['date']}>
             <Row>
             <Col md={2}>
                 <div className='mood-entry'>
-                  {entry['mood']}
+                  {entry.entries['mood']}
                 </div>
               </Col>
               <Col>
                 <div className='journal-entry'>
-                  {entry['journalText']}
+                  {entry.entries['journalText']}
                 </div>
               </Col>
             <Col md={1}>
-              <Button className='del-btn' id={entry['date']} onClick={() => deleteEntry(entry['date'])}>Delete</Button>
+              <Button className='del-btn' id={entry.entries['date']} onClick={() => deleteEntry(entry.entries['date'])}>Delete</Button>
             </Col>
             </Row>
           </Container>
