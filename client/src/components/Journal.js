@@ -20,6 +20,7 @@ export default function Journal() {
       date: new Date()
     };
     dispatch(postData(entry));
+    window.location.reload();
   }
 
   return (<>

@@ -16,43 +16,43 @@ export default function AllEntries() {
     console.log(date);
     axios.delete(`api/delete/${date}`).then(data => {
       console.log(data);
+      window.location.reload();
     })
   }
 
   const dispatch = useDispatch();
   useEffect(() => {
-    // upon load, get all journal entries. Then map entries to jsx.
-    let allEntries = dispatch(readData()).then((data) => {
-      // for (let entry of data.data[0].entries) {
-      //   console.log(entry)
-      // }
-      console.log('reading')
-      // console.log(data)
-      console.log(data.data[0].entries)
-
-      setEntries(data.data.map((entry) => {
-        return (
-          <Container className='journal-container' key={entry['_id']}>
-            <Row>
-            <Col md={2}>
-                <div className='mood-entry'>
-                  {entry.entries['mood']}
-                </div>
+    try {
+      // upon load, get all journal entries. Then map entries to jsx.
+      let allEntries = dispatch(readData()).then((data) => {
+        setEntries(data.data.map((entry) => {
+          return (
+            <Container className='journal-container' key={entry['_id']}>
+              <Row>
+              <Col md={2}>
+                  <div className='mood-entry'>
+                    {entry.entries['mood']}
+                  </div>
+                </Col>
+                <Col>
+                  <div className='journal-entry'>
+                    {entry.entries['journalText']}
+                  </div>
+                </Col>
+              <Col md={1}>
+                <Button className='del-btn' id={entry['_id']} onClick={() => deleteEntry(entry['_id'])}>Delete</Button>
               </Col>
-              <Col>
-                <div className='journal-entry'>
-                  {entry.entries['journalText']}
-                </div>
-              </Col>
-            <Col md={1}>
-              <Button className='del-btn' id={entry['_id']} onClick={() => deleteEntry(entry['_id'])}>Delete</Button>
-            </Col>
-            </Row>
-          </Container>
-        )
-      }))
-    })
-
+              </Row>
+            </Container>
+          )
+        }))
+      }).catch(err => {
+        console.error(err)
+      })
+    }
+    catch (err) {
+      console.error(err)
+    }
     // accomplish the same thing in this local component, instead of with dispatch:
     // axios.get('api/journal/all').then((data) => {
     //   console.log(data)
