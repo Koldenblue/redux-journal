@@ -5,7 +5,8 @@ import axios from 'axios';
 export const journalSlice = createSlice({
   name: 'journal',
   initialState: {
-    value: ''
+    value: '',
+    theme: 'light'
   },
   reducers: {
     postEntry: (state, action) => {
@@ -16,6 +17,14 @@ export const journalSlice = createSlice({
     deleteEntry: (state) => {
       state.value = '';
       console.log(state)
+    },
+    switchTheme: (state) => {
+      console.log('switching')
+      if (state.theme === 'light') {
+        state.theme = 'dark';
+      } else {
+        state.theme = 'light';
+      }
     }
   }
 });
@@ -43,9 +52,11 @@ export const readData = (entry) => dispatch => {
 // Alternative is to define selector in the file they are used instead of this file 
 export const selectText = state => state.journal.value;
 
+export const selectTheme = state => state.journal.theme;
+
 // the available dispatches
 // delete is a reserved keyword
-export const { postEntry, deleteEntry } = journalSlice.actions;
+export const { postEntry, deleteEntry, switchTheme } = journalSlice.actions;
 
 // export this whole reducer
 export default journalSlice.reducer;

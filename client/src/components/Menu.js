@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { readData } from '../app/journalSlice';
 import Moods from './Moods';
 import { useHistory } from "react-router-dom";
+import BackgroundToggle from './BackgroundToggle';
 
 export default function Menu() {
   const dispatch = useDispatch();
@@ -21,12 +22,13 @@ export default function Menu() {
     history.push('/');
   }
   return (<>
-    <Nav defaultActiveKey="/home" className="flex-column nav-menu">
+    <Nav className="flex-column nav-menu">
       {/* <Nav.Link href="/latest">View my latest entry</Nav.Link> */}
       {/* <Nav.Link href='/allentries'>View all entries</Nav.Link> */}
       <button onClick={makeNewEntries} className='menu-btn btn btn-success'>Make New Entries</button>
       <button onClick={getAllEntries} className='menu-btn btn btn-success'>View all Entries</button>
       {/* <Nav.Link href="/specificdate">View entries on a specific date</Nav.Link> */}
+      <BackgroundToggle />
     </Nav>
     {/* should have delete and update entries as well */}
   </>)
