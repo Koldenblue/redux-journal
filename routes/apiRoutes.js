@@ -11,9 +11,16 @@ router.get('/journal/all', (req, res) => {
 
 router.put('/journal', (req, res) => {
   db.Journal.findOne({}, (err, doc) => {
+    console.log(req.body)
     if (doc === null) {
       console.log(' no doc yet')
-      db.Journal.create(req.body)
+      db.Journal.create(req.body).then(() => {
+        db.Journal.findOne({}, (err, doc) => {
+          doc.entries.push(req.body)
+          doc.save()
+          res.json(doc);
+        })
+      })
     } else {
       doc.entries.push(req.body)
       doc.save()
