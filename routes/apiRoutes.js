@@ -37,4 +37,11 @@ router.get('/moodtotals', (req, res) => {
   })
 })
 
+router.delete('/delete/:date', (req, res) => {
+  console.log(req.params)
+  console.log('delete route');
+  // db.Journal.deleteOne()
+  res.json({})
+})
+
 module.exports = router;

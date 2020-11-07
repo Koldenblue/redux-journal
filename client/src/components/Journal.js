@@ -17,7 +17,7 @@ export default function Journal() {
     let entry = {
       journalText: event.target[0].value,
       mood: event.target[1].value,
-      date: ''
+      date: new Date()
     };
     dispatch(postData(entry));
   }

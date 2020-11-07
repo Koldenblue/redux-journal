@@ -5,14 +5,21 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from 'react-bootstrap/Button';
 import Title from './Title';
 import Menu from './Menu';
 
 export default function AllEntries() {
   const [entries, setEntries] = useState('');
 
+  const deleteEntry = (date) => {
+    console.log(date);
+    axios.delete(`api/delete/${date}`).then(data => {
+      console.log(data);
+    })
+  }
+
   const dispatch = useDispatch();
-  let key = 0;
   useEffect(() => {
     // upon load, get all journal entries. Then map entries to jsx.
     let allEntries = dispatch(readData()).then((data) => {
@@ -21,18 +28,21 @@ export default function AllEntries() {
       // }
       setEntries(data.data[0].entries.map((entry) => {
         return (
-          <Container className='journal-container' key={key++}>
+          <Container className='journal-container' key={entry['date']}>
             <Row>
+            <Col md={2}>
+                <div className='mood-entry'>
+                  {entry['mood']}
+                </div>
+              </Col>
               <Col>
                 <div className='journal-entry'>
                   {entry['journalText']}
                 </div>
               </Col>
-              <Col md={2}>
-                <div className='mood-entry'>
-                  {entry['mood']}
-                </div>
-              </Col>
+            <Col md={1}>
+              <Button className='del-btn' id={entry['date']} onClick={() => deleteEntry(entry['date'])}>Delete</Button>
+            </Col>
             </Row>
           </Container>
         )
