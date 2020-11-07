@@ -14,7 +14,7 @@ function seeder() {
       [
         {
           journalText: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos iure nesciunt sit dolorum numquam excepturi, officiis facilis dolor velit deserunt adipisci veritatis ipsa at accusantium dicta repellat incidunt molestiae. Repellendus.',
-          mood: 'HHappy',
+          mood: 'Happy',
           date: new Date().setDate(new Date().getDate()),
         },
         {

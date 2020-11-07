@@ -12,12 +12,10 @@ router.get('/journal/all', (req, res) => {
 router.put('/journal', (req, res) => {
   db.Journal.findOne({}, (err, doc) => {
     if (doc === null) {
-      // todo: no entries yet?
+      console.log(' no doc yet')
       db.Journal.create(req.body)
     } else {
-      console.log(doc)
       doc.entries.push(req.body)
-      console.log(doc)
       doc.save()
       res.json(doc);
     }
@@ -30,10 +28,6 @@ router.get('/moodtotals', (req, res) => {
     let totalMoods = doc.getTotalMoods();
     res.json(totalMoods);
   })
-})
-
-router.post('/admin/seeder', (req, res) => {
-  res.json('hello')
 })
 
 module.exports = router;

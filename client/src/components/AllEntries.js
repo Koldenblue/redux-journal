@@ -5,6 +5,8 @@ import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Title from './Title';
+import Menu from './Menu';
 
 export default function AllEntries() {
   const [entries, setEntries] = useState('');
@@ -17,26 +19,26 @@ export default function AllEntries() {
       // for (let entry of data.data[0].entries) {
       //   console.log(entry)
       // }
-      setEntries(data.data[0].entries.map((entry) =>{
+      setEntries(data.data[0].entries.map((entry) => {
         return (
           <Container className='journal-container' key={key++}>
             <Row>
               <Col>
-              <div className='journal-entry'>
-                {entry['journalText']}
-              </div>
+                <div className='journal-entry'>
+                  {entry['journalText']}
+                </div>
               </Col>
               <Col md={2}>
-              <div className='mood-entry'>
-                {entry['mood']}
-              </div>
+                <div className='mood-entry'>
+                  {entry['mood']}
+                </div>
               </Col>
             </Row>
           </Container>
         )
       }))
     })
-    
+
     // accomplish the same thing in this local component, instead of with dispatch:
     // axios.get('api/journal/all').then((data) => {
     //   console.log(data)
@@ -44,6 +46,24 @@ export default function AllEntries() {
   }, [])
 
   return (<>
-    {entries}
+    <Title />
+    <Container fluid>
+      <Row>
+        <Col md={2}>
+          <Menu />
+        </Col>
+
+        <Col>
+          <Container>
+            <Row>
+              <Col>
+                {entries}
+
+              </Col>
+            </Row>
+          </Container>
+        </Col>
+      </Row>
+    </Container>
   </>)
 }
