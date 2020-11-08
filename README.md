@@ -17,6 +17,8 @@
 
 <p>On the back-end, MongoDB is used to store user journal entries. HTML routing is accomplished with react-router-dom. Express.js is used to route api and database functions.</p> 
 
+![image](https://user-images.githubusercontent.com/64618290/98462754-57038d80-216b-11eb-981d-4a936fbb8420.png)
+
 <h3 id='discussion'>Code Discussion</h3>
 <p>There are two major advantages to Redux. One is the ease of storage of state variables in the Redux store. These state variables in the Redux store are akin to global variables. This global state is easily accessible by all props. The second advantage to Redux is in debugging. Changes to and the history of the Redux store state are easily visible, using the Redux browser extension. Furthermore, state changes are rewindable, recordable, and replayable - all very useful functionality for debugging purposes.</p>
 
