@@ -11,7 +11,7 @@
 5. <a href="#license">License</a>
 6. <a href="#questions">Issues and Questions</a>
 <hr><h3 id='description'>Description</h3>
-<p>The <a href='https://dashboard.heroku.com/apps/redux-journal'>deployed website</a> is a simple journal which demonstrates the use of React with the Redux library, as well as a non-relational database through MongoDB. </p>
+<p>The <a href='https://redux-journal.herokuapp.com'>deployed website</a> is a simple journal which demonstrates the use of React with the Redux library, as well as a non-relational database through MongoDB. </p>
 
 <p>The app is simple in its functionality. Users may write journal entries, then store and delete them. On the front-end, React is used to present the components that make up the user interface. The Redux library is used as well for UI bindings. For example, the Redux store is used to store dark/light themes as a global state. This state is passed down to all props. Redux is also used to provide global functions such as api calls to UI elements.</p>
 
